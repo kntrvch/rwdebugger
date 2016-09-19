@@ -1,0 +1,35 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- for debugging -->
+<div class="debugger">
+	<span class="visible-xs">SIZE XS<br> &le; 767 </span>
+	<span class="visible-sm">SIZE SM<br> 768 - 991</span>
+	<span class="visible-md">SIZE MD<br> 992 - 1199</span>
+	<span class="visible-lg">SIZE LG<br> &ge; 1200 </span>
+	<span class="current-width"></span>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" defer></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer></script>
+<script>
+jQuery(function() {
+
+	$( ".debugger .current-width" ).text( $( window ).width() );
+	
+	$( window ).resize(function() {
+	  $( ".debugger .current-width" ).text( $( window ).width() );
+	});
+
+	var allElements = document.getElementsByTagName("*"); 
+
+	for(var i = 0; i < allElements.length; i++) {
+		if(allElements[i].length > $( window ).width()) {
+			console.log("WARNING! Viewport size exceeded! Element " + allElements[i].tagName + " (" + allElements[i].offsetWidth + "px)");
+		}
+	    console.log(allElements[i].tagName + " " + allElements[i].offsetWidth);
+	}
+
+});
+
+</script>
+<!-- // -->
